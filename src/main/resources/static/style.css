@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+*, *:after,*:before { 
+    margin: 0;    
+    padding: 0;
+    box-sizing: border-box;    
+    text-decoration: none;
+}
+body{
+    font-family: 'Fira Code', monospace;
+    font-size: 100%;    
+    list-style-type: none;
+
+}
+.form-control, .input-group{
+    width: 350px;
+}
+form{
+    margin: auto;
+}
+.card{
+    width: 30%;
+}
