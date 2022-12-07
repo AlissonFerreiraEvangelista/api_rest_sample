@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  nginx:
+      container_name: java-nginx
+      build:
+        dockerfile: nginx.dockerfile
+        context: .
+      image: nginx
+      restart: always
+      ports:
+      - "80:80"
+      networks:
+        - bridge-network
+      depends_on:
+      - app
+
+
+  postgresdb:
+    image: postgres
+    restart: always
+    environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=Ta2506f
+     - POSTGRES_DB=postgresdb
+    ports:
+      - "5432:5432"
+    networks:
+      - bridge-network
+
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: myapp-spring
+    container_name: myapp-spring
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Ta2506f
+    ports:
+      - "8080"
+    networks:
+      - bridge-network
+    depends_on:
+      - "postgresdb"   
+
+networks:
+  bridge-network:
+    driver: bridge

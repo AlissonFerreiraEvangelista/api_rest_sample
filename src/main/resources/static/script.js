@@ -16,7 +16,7 @@ function salvarUsuario() {
             ),
             contentType: "application/json; charset-utf8",
             success: function (response) {
-                alert("Salvo com success");
+                alert("Salvo com sucesso!");
                 limpa();
             }
         }).fail(function (xhr, status, errorThrown) {
@@ -29,7 +29,7 @@ function salvarUsuario() {
     
 }
 
-function pesquisarUser() {
+$("#pesquisarUser").click(function(){
     let nome = $("#nomeBusca").val();
 
     if (nome != null && nome.trim() != '') {
@@ -41,15 +41,17 @@ function pesquisarUser() {
                 $("#tabelaResultado > tbody > tr").remove();
                 for (let i = 0; i < response.length; i++) {
                     $("#tabelaResultado > tbody").append(
-                        '<tr><td>' + response[i].nome + '</td><td>' + response[i].idade + '</td><td><button type="button" onclick="editar(\''+ response[i].id+'\')" class="btn btn-secondary">Ver</button><td></tr>');
+                        '<tr id=\''+ response[i].id+'\'><td>' + response[i].nome + '</td><td>' + response[i].idade + '</td><td><button type="button" onclick="editar(\''+ response[i].id+'\')" class="btn btn-secondary">Ver</button></td><td><button type="button" class="btn btn-danger" onclick="deleteUser(\''+ response[i].id+'\')">Deletar</button></td></tr>');
                 }
             }
         }).fail(function (xhr, status, errorThrown) {
             alert("Erro ao Buscar Usuário: " + xhr.responseText);
         });
     }
+}) 
+   
 
-}
+
 function editar(id) {
     
     $.ajax({
@@ -65,6 +67,33 @@ function editar(id) {
     }).fail(function (xhr, status, errorThrown) {
         alert("Erro ao Buscar Usuário por id: " + xhr.responseText);
     });
+}
+$("#deleteUsertela").click(function(){
+    let id = $("#id").val();
+    if(id.trim() == '' || id == null){
+     alert("Usuário deve ser informado");
+    }else{
+        deleteUser(id);
+        limpa();
+    }
+})
+    
+
+function deleteUser(id){
+    if(confirm('Deseja realmente Deletar?')){
+        $.ajax({
+            method: "DELETE",
+            url: "delete",
+            data: "id=" + id,
+            success: function (response) {
+                $("#"+id).remove();
+                alert(response);
+            }
+        }).fail(function (xhr, status, errorThrown) {
+            alert("Erro ao Deletar Usuário por id: " + xhr.responseText);
+        });
+    }
+    
 }
 
 function limpa() {

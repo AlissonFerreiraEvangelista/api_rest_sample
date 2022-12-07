@@ -38,6 +38,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Pesquisa
     </button>
+    <button type="button" class="btn btn-danger" id="deleteUsertela">Deletar</button>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,22 +54,25 @@
                 <label for="recipient-name" class="col-form-label">Informe o Nome:</label>
                 <input type="text" class="form-control" id="nomeBusca">
               </div>
-              <button type="button" class="btn btn-success" onclick="pesquisarUser()">Buscar</button>
+              <button type="button" class="btn btn-success" id="pesquisarUser">Buscar</button>
 
             </form>
-
+           <div style="overflow: scroll;max-height: 300px;">
             <table class="table" id="tabelaResultado">
               <thead>
                 <tr>
                   <th scope="col">Nome</th>
                   <th scope="col">Idade</th>
                   <th scope="col">Editar</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
 
               </tbody>
             </table>
+           </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
