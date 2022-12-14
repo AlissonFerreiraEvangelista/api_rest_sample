@@ -14,6 +14,7 @@ function buscaEndereco() {
             $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
                 if (!("erro" in dados)) {
+                    $(".tdEndereco").show();
                     $("#rua").val(dados.logradouro);
                     $("#bairro").val(dados.bairro);
                     $("#cidade").val(dados.localidade);
@@ -30,6 +31,7 @@ function buscaEndereco() {
     } else {
         alert("Campo CEP em branco");
         limpaFormulario();
+        $(".tdEndereco").hide();
     }
 
 }

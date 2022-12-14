@@ -30,6 +30,34 @@
         <input required type="number" class="form-control" id="idade" placeholder="Informe a Idade" title="Idade deve ser maior que 0" >
         <label for="idade">Idade</label>
       </div>
+      <div class="input-group">
+        <input type="text" class="form-control" id="cep" placeholder="Digite o CEP">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary m-2" onclick="buscaEndereco()" type="button">Buscar</button>
+        </div>
+      </div>
+      <div class="tdEndereco" style="display: none;">
+        <div class="mb-3">
+          <label for="rua" class="form-label">Rua</label>
+          <input type="text" class="form-control" id="rua">
+        </div>
+  
+        <div class="mb-3">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input type="text" class="form-control" id="bairro">
+        </div>
+  
+        <div class="mb-3">
+          <label for="cidade" class="form-label">cidade</label>
+          <input type="text" class="form-control" id="cidade">
+        </div>
+  
+        <div class="mb-3">
+          <label for="uf" class="form-label">UF</label>
+          <input type="text" class="form-control" id="uf">
+        </div>
+      </div>
+      
     </form>
 
     <button type="button" class="btn btn-success" onclick="salvarUsuario()">Salvar</button>
@@ -48,6 +76,7 @@
             <h5 class="modal-title" id="exampleModalLabel">Pesquisar Usuário</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <div class="modal-body">
             <form>
               <div class="mb-3">
@@ -57,6 +86,7 @@
               <button type="button" class="btn btn-success" id="pesquisarUser">Buscar</button>
 
             </form>
+
            <div style="overflow: scroll;max-height: 300px;">
             <table class="table" id="tabelaResultado">
               <thead>
@@ -94,7 +124,8 @@
     crossorigin="anonymous"></script>
 
   <!---Import Js-->
-  <script src="script.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/scriptEndereco.js"></script>
 
 </body>
 
