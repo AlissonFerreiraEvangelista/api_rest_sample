@@ -11,6 +11,7 @@ Criei esse projeto com a intenção de aprender a utilizar as tecnologias do jQu
  - Visual Studio Code
  - Docker
  - Nginx
+ - Swagger
  
 
 
@@ -21,23 +22,25 @@ Criei esse projeto com a intenção de aprender a utilizar as tecnologias do jQu
  4 - docker compose up <br>
  
 # Endpoints
+## Swagger
+http://localhost:8080/springboot-bootstrap/swagger-ui.html
 
-##POST
+## POST
 http://localhost:8080/springboot-bootstrap/save
 
-##GET
+## GET
 http://localhost:8080/springboot-bootstrap/findall
 
-##PUT
+## PUT
 http://localhost:8080/springboot-bootstrap/update
 
-##GET
+## GET
 http://localhost:8080/springboot-bootstrap/id
 
-##GET
+## GET
 http://localhost:8080/springboot-bootstrap/findbyname
 
-##DELETE
+## DELETE
 http://localhost:8080/springboot-bootstrap/delete
 
 # Features
