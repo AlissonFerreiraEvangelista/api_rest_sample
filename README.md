@@ -46,7 +46,7 @@ $ git clone https://github.com/AlissonFerreiraEvangelista/api_rest_sample.git
 $ cd \apringboot-rest-api
 # Acesse o package default e inicie o arquivo Application.java
 
-Aplicação esta rodando na porta 80, acesse localhost/springboot-bootstrap
+Aplicação esta rodando na porta padrão 8080, acesse localhost:8080/springboot-bootstrap
 ```
 ## :no_entry_sign: Lembrete
 Por padrão está configurado o PostgreSQL no application.properties, caso não tenha o mesmo instalado remover as linhas 23 a 26.
