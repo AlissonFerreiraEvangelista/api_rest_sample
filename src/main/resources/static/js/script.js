@@ -8,7 +8,7 @@ function salvarUsuario() {
     let cidade = $("#cidade").val();
     let uf = $("#uf").val();
 
-    if ((nome != null && nome.trim() != '') && (idade != null && idade > 0)) {
+    if ((nome != null && nome.trim() != '') && (idade != null && idade > 0) && (cep != null && cep.trim() != '')) {
         $.ajax({
             method: "POST",
             url: "save",
@@ -36,7 +36,7 @@ function salvarUsuario() {
             alert("Erro ao salvar: " + xhr.responseText);
         });
     } else {
-        alert("Nome e idade devem ser preenchidos");
+        alert("Nome a idade e o cep devem ser preenchidos");
     }
 
 
@@ -46,20 +46,22 @@ $("#pesquisarUser").click(function () {
     let nome = $("#nomeBusca").val();
 
     if (nome != null && nome.trim() != '') {
-        $.ajax({
+       let request = $.ajax({
             method: "GET",
             url: "findbyname",
             data: "nome=" + nome,
             success: function (response) {
+            
                 $("#tabelaResultado > tbody > tr").remove();
                 for (let i = 0; i < response.length; i++) {
                     $("#tabelaResultado > tbody").append(
                         '<tr id=\'' + response[i].id + '\'><td>' + response[i].nome + '</td><td>' + response[i].idade + '</td><td><button type="button" onclick="editar(\'' + response[i].id + '\')" class="btn btn-secondary">Ver</button></td><td><button type="button" class="btn btn-danger" onclick="deleteUser(\'' + response[i].id + '\')">Deletar</button></td></tr>');
                 }
-            }
+            }  
         }).fail(function (xhr, status, errorThrown) {
             alert("Erro ao Buscar Usuário: " + xhr.responseText);
         });
+ 
     } else {
         alert("Nome deve ser Informado");
     }
@@ -128,4 +130,5 @@ function limpa() {
     $("#bairro").val("");
     $("#cidade").val("");
     $("#uf").val("");
+    $(".tdEndereco").hide();
 }
