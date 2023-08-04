@@ -20,7 +20,7 @@ Para poder iniciar o projeto verifique se sua máquina tem os seguintes programa
 - [X] JDK 11
 - [X] Git
 - [X] Editor de Texto VSCode ou Eclipse IDE
-- [ ] PostgreSQL (pode ser utilizado o H2)
+- [X] PostgreSQL (pode ser utilizado o H2)
 - [ ] Docker (Opcional)
 
 ##  :zap: Executando o Projeto Com Docker
