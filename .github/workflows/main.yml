@@ -1,0 +1,24 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    name: Build Java Application
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3.6.0
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.12.0
+      with:
+        distribution: 'temurin'
+        java-version: 17
+        cache: 'maven'        
+    - name: Build with Maven
+      run: mvn clean package -DskipTest=true
